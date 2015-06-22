@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2BEABBA1B36D6DB006C60AA /* EColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEABB91B36D6DB006C60AA /* EColumn.swift */; };
+		D2BEABBE1B36D9B1006C60AA /* MyKitName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEABBD1B36D9B1006C60AA /* MyKitName.swift */; };
 		D2DC4AC919E7C3D40064E34A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DC4AC819E7C3D40064E34A /* AppDelegate.swift */; };
 		D2DC4ACB19E7C3D40064E34A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DC4ACA19E7C3D40064E34A /* ViewController.swift */; };
 		D2DC4ACE19E7C3D40064E34A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2DC4ACC19E7C3D40064E34A /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2BEABB91B36D6DB006C60AA /* EColumn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EColumn.swift; sourceTree = "<group>"; };
+		D2BEABBD1B36D9B1006C60AA /* MyKitName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKitName.swift; sourceTree = SOURCE_ROOT; };
 		D2DC4AC319E7C3D40064E34A /* EChartDemo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EChartDemo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DC4AC719E7C3D40064E34A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2DC4AC819E7C3D40064E34A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,11 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				D2DC4AE819E7C95E0064E34A /* ViewControllers */,
-				D2DC4AC819E7C3D40064E34A /* AppDelegate.swift */,
 				D2DC4ACA19E7C3D40064E34A /* ViewController.swift */,
 				D2DC4ACC19E7C3D40064E34A /* Main.storyboard */,
-				D2DC4ACF19E7C3D40064E34A /* Images.xcassets */,
-				D2DC4AD119E7C3D40064E34A /* LaunchScreen.xib */,
 				D2DC4AC619E7C3D40064E34A /* Supporting Files */,
 			);
 			path = "EChartDemo-Swift";
@@ -96,6 +97,10 @@
 		D2DC4AC619E7C3D40064E34A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D2BEABBD1B36D9B1006C60AA /* MyKitName.swift */,
+				D2DC4AC819E7C3D40064E34A /* AppDelegate.swift */,
+				D2DC4ACF19E7C3D40064E34A /* Images.xcassets */,
+				D2DC4AD119E7C3D40064E34A /* LaunchScreen.xib */,
 				D2DC4AC719E7C3D40064E34A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -130,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				D2DC4AEE19E7D07B0064E34A /* Charts */,
+				D2BEABB91B36D6DB006C60AA /* EColumn.swift */,
 			);
 			name = EChart;
 			path = "EChart-Swift";
@@ -246,7 +252,9 @@
 				D2DC4AEC19E7CCA00064E34A /* EColumnChartViewController.swift in Sources */,
 				D2DC4ACB19E7C3D40064E34A /* ViewController.swift in Sources */,
 				D2DC4AF019E7D1290064E34A /* EColumnChart.swift in Sources */,
+				D2BEABBA1B36D6DB006C60AA /* EColumn.swift in Sources */,
 				D2DC4AC919E7C3D40064E34A /* AppDelegate.swift in Sources */,
+				D2BEABBE1B36D9B1006C60AA /* MyKitName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

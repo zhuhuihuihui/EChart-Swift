@@ -10,10 +10,35 @@ import UIKit
 
 class EColumn: UIView
 {
-
-    override func drawRect(rect: CGRect)
+    private var chartLine: CAShapeLayer = CAShapeLayer()
+    
+    
+    //MARK: View Life Circle
+    override init(frame: CGRect)
     {
-        MyKitName.drawEColumn()
+        super.init(frame: frame)
+        println("EColumn init with frame called")
+        self.backgroundColor = UIColor.blueColor()
+        
+    }
+    
+    required init(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        println("EColumn init with coder called")
+    }
+    
+    override func awakeFromNib()
+    {
+        println("EColumn awakeFromNib called")
+    }
+    
+    override func layoutSubviews() {
+        println("EColumn layoutSubviews called; self.bound = \(self.bounds)")
+    }
+    
+    override func drawRect(rect: CGRect) {
+        println("EColumn drawRect called with Rect = \(rect)")
     }
 
 }

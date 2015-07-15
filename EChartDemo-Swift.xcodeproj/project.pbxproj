@@ -17,6 +17,7 @@
 		D2DC4ADF19E7C3D40064E34A /* EChartDemo_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DC4ADE19E7C3D40064E34A /* EChartDemo_SwiftTests.swift */; };
 		D2DC4AEC19E7CCA00064E34A /* EColumnChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DC4AEB19E7CCA00064E34A /* EColumnChartViewController.swift */; };
 		D2DC4AF019E7D1290064E34A /* EColumnChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DC4AEF19E7D1290064E34A /* EColumnChart.swift */; };
+		D2FC69841B4E988C008D236F /* EColumnDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC69831B4E988C008D236F /* EColumnDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		D2DC4ADE19E7C3D40064E34A /* EChartDemo_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EChartDemo_SwiftTests.swift; sourceTree = "<group>"; };
 		D2DC4AEB19E7CCA00064E34A /* EColumnChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EColumnChartViewController.swift; sourceTree = "<group>"; };
 		D2DC4AEF19E7D1290064E34A /* EColumnChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EColumnChart.swift; sourceTree = "<group>"; };
+		D2FC69831B4E988C008D236F /* EColumnDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EColumnDataModel.swift; path = Models/EColumnDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 		D2DC4AED19E7D0720064E34A /* EChart */ = {
 			isa = PBXGroup;
 			children = (
+				D2FC69801B4E979E008D236F /* Models */,
 				D2DC4AEE19E7D07B0064E34A /* Charts */,
 				D2BEABB91B36D6DB006C60AA /* EColumn.swift */,
 			);
@@ -147,6 +150,14 @@
 				D2DC4AEF19E7D1290064E34A /* EColumnChart.swift */,
 			);
 			name = Charts;
+			sourceTree = "<group>";
+		};
+		D2FC69801B4E979E008D236F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D2FC69831B4E988C008D236F /* EColumnDataModel.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +266,7 @@
 				D2BEABBA1B36D6DB006C60AA /* EColumn.swift in Sources */,
 				D2DC4AC919E7C3D40064E34A /* AppDelegate.swift in Sources */,
 				D2BEABBE1B36D9B1006C60AA /* MyKitName.swift in Sources */,
+				D2FC69841B4E988C008D236F /* EColumnDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

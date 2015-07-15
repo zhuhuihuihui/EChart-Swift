@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T4D-en-ueC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T4D-en-ueC">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -69,18 +69,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBs-yG-CS4" customClass="EColumn" customModule="EChartDemo_Swift" customModuleProvider="target">
-                                <rect key="frame" x="150" y="149.5" width="300" height="300"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBs-yG-CS4" customClass="EColumnChart" customModule="EChartDemo_Swift" customModuleProvider="target">
+                                <rect key="frame" x="16" y="72" width="568" height="300"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HBs-yG-CS4" secondAttribute="height" multiplier="1:1" id="QsH-x3-tKl"/>
                                     <constraint firstAttribute="width" constant="300" id="iI5-6W-EWa"/>
+                                    <constraint firstAttribute="height" constant="300" id="ubV-Br-RWT"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QsH-x3-tKl"/>
+                                        <exclude reference="iI5-6W-EWa"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HBs-yG-CS4" firstAttribute="leading" secondItem="CL1-vA-ebF" secondAttribute="leadingMargin" constant="20" id="0y3-Oj-Uox"/>
+                            <constraint firstItem="HBs-yG-CS4" firstAttribute="top" secondItem="XUp-OM-mWC" secondAttribute="bottom" constant="8" symbolic="YES" id="7ce-7u-FLG"/>
+                            <constraint firstItem="HBs-yG-CS4" firstAttribute="leading" secondItem="CL1-vA-ebF" secondAttribute="leadingMargin" id="PhQ-s2-g6H"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HBs-yG-CS4" secondAttribute="trailing" constant="20" id="RvR-De-bRP"/>
                             <constraint firstAttribute="centerX" secondItem="HBs-yG-CS4" secondAttribute="centerX" id="f2p-eC-H2z"/>
                             <constraint firstAttribute="centerY" secondItem="HBs-yG-CS4" secondAttribute="centerY" id="oCw-NF-idy"/>
@@ -89,10 +98,14 @@
                             <mask key="constraints">
                                 <exclude reference="0y3-Oj-Uox"/>
                                 <exclude reference="RvR-De-bRP"/>
+                                <exclude reference="oCw-NF-idy"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="EColumnChart" id="Tc5-na-hl7"/>
+                    <connections>
+                        <outlet property="eColumnChart" destination="HBs-yG-CS4" id="wn5-vw-R4l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WvW-TC-m0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

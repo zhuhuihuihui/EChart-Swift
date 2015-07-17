@@ -12,12 +12,21 @@ class EColumnChartViewController: UIViewController
 {
     @IBOutlet weak var eColumnChart: EColumnChart!
     
+    var data = [EColumnDataModel]()
+    var two = [EColumnDataModel](count: 50, repeatedValue: EColumnDataModel())
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.eColumnChart.delegate = self
         self.eColumnChart.dataSource = self
+        
+        for i in 0...50
+        {
+            let randomValue = arc4random() % 100
+            data.append(EColumnDataModel(label: "\(i)", value: Double(randomValue), index: i, unit: "kWh"))
+        }
+        
     }
 
     override func didReceiveMemoryWarning()
@@ -32,7 +41,7 @@ class EColumnChartViewController: UIViewController
 extension EColumnChartViewController: EColumnChartDataSource
 {
     func numberOfColumnsIn(eColumnChart: EColumnChart) -> Int? {
-        return 6
+        return data.count
     }
     
     func numberOfColumnsPresentedEveryTimeIn(eColumnChart: EColumnChart) -> Int? {
@@ -40,11 +49,25 @@ extension EColumnChartViewController: EColumnChartDataSource
     }
     
     func highestValueIn(eColumnChart: EColumnChart) -> EColumnDataModel? {
-        return EColumnDataModel()
+        var maxDataModel: EColumnDataModel
+        var maxValue = DBL_MIN
+        for dataModel in self.data
+        {
+            if (dataModel.value > maxValue)
+            {
+                maxValue = dataModel.value;
+                maxDataModel = dataModel;
+            }
+        }
+        return maxDataModel;
     }
     
-    func valueFor(eColumnChart: EColumnChart, atIndex: Int) -> EColumnDataModel? {
-        return EColumnDataModel()
+    func valueFor(eColumnChart: EColumnChart, atIndex index: Int) -> EColumnDataModel? {
+        if index > data.count || index < 0
+        {
+            return nil
+        }
+        return data[index]
     }
     
     func colorFor(eColumn: EColumn) -> UIColor? {

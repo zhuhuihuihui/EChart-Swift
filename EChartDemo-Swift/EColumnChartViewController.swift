@@ -49,7 +49,7 @@ extension EColumnChartViewController: EColumnChartDataSource
     }
     
     func highestValueIn(eColumnChart: EColumnChart) -> EColumnDataModel? {
-        var maxDataModel: EColumnDataModel
+        var maxDataModel = EColumnDataModel()
         var maxValue = DBL_MIN
         for dataModel in self.data
         {
@@ -59,7 +59,7 @@ extension EColumnChartViewController: EColumnChartDataSource
                 maxDataModel = dataModel;
             }
         }
-        return maxDataModel;
+        return maxDataModel
     }
     
     func valueFor(eColumnChart: EColumnChart, atIndex index: Int) -> EColumnDataModel? {

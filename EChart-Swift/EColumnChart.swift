@@ -63,6 +63,20 @@ class EColumnChart: UIView
     weak var dataSource: EColumnChartDataSource?
     weak var delegate: EColumnChartDelegate?
     
+    let horizontalLineHeight = 0.5
+    
+    var _fullValueOfTheGraph: Double?
+    var fullValueOfTheGraph: Double? {
+        get {
+            if let highestColumn = self.dataSource?.highestValueIn(self) where _fullValueOfTheGraph == nil {
+                let valueGap = highestColumn.value / 10 + 1;
+                let horizontalLabelsCount = Int(highestColumn.value / valueGap) + 1;
+                _fullValueOfTheGraph = Double(valueGap) * Double(horizontalLabelsCount);
+            }
+            return _fullValueOfTheGraph
+        }
+    }
+    
 //    /** Pull out the columns hidden in the left*/
 //    - (void)moveLeft;
 //    
@@ -118,6 +132,9 @@ class EColumnChart: UIView
     override var bounds: CGRect {
         didSet{
             println("EColumnChart bounds didSet = \(self.bounds)")
+            for subview in self.subviews as! [UIView] {
+                subview.removeFromSuperview()
+            }
             reloadDataInRect(bounds)
         }
     }
@@ -137,7 +154,7 @@ class EColumnChart: UIView
     
     func reloadDataInRect(rect: CGRect)
     {
-        
+        buildBackgroundInRect(rect)
     }
     
     func buildBackgroundInRect(rect: CGRect)
@@ -158,45 +175,44 @@ class EColumnChart: UIView
         
         /** Start construct horizontal lines*/
         /** Start construct value labels for horizontal lines*/
-        if self.showHorizontalLabelsWithInteger
+        if let highestColumn = self.dataSource?.highestValueIn(self) where self.showHorizontalLabelsWithInteger
         {
-            if let highestColumn = self.dataSource?.highestValueIn(self)
+            let valueGap = highestColumn.value / 10 + 1;
+            let horizontalLabelsCount = Int(highestColumn.value / valueGap) + 1;
+            let heightGap = Double(rect.height) / Double(horizontalLabelsCount)
+            _fullValueOfTheGraph = Double(valueGap) * Double(horizontalLabelsCount);
+            for i in 0...horizontalLabelsCount
             {
-                let valueGap = highestColumn.value / 10 + 1;
-                let horizontalLabelsCount = Int(highestColumn.value / valueGap) + 1;
-                let heightGap = Double(rect.height) / Double(horizontalLabelsCount)
-                _fullValueOfTheGraph = valueGap * horizontalLabelsCount;
-                for (int i = 0; i <= horizontalLabelsCount; i ++)
-                {
-                    UIView *horizontalLine = [[UIView alloc] initWithFrame:CGRectMake(0, heightGap * i, self.frame.size.width, HORIZONTAL_LINE_HEIGHT)];
-                    horizontalLine.backgroundColor = ELightGrey;
-                    [self addSubview:horizontalLine];
-                    
-                    EColumnChartLabel *eColumnChartLabel = [[EColumnChartLabel alloc] initWithFrame:CGRectMake(-1 * Y_COORDINATE_LABEL_WIDTH, -heightGap / 2.0 + heightGap * i, Y_COORDINATE_LABEL_WIDTH, heightGap)];
-                    [eColumnChartLabel setTextAlignment:NSTextAlignmentCenter];
-                    eColumnChartLabel.text = [[NSString stringWithFormat:@"%d ", valueGap * (horizontalLabelsCount - i)] stringByAppendingString:[_dataSource highestValueEColumnChart:self].unit];;
-                    [self addSubview:eColumnChartLabel];
-                }
+                var horizontalLine = UIView(frame: CGRectMake(CGFloat(0), CGFloat(heightGap) * CGFloat(i), CGFloat(rect.width), CGFloat(self.horizontalLineHeight)))
+//                    horizontalLine.backgroundColor = ELightGrey;
+                horizontalLine.backgroundColor = UIColor.redColor()
+                self.addSubview(horizontalLine)
+                
+//                    EColumnChartLabel *eColumnChartLabel = [[EColumnChartLabel alloc] initWithFrame:CGRectMake(-1 * Y_COORDINATE_LABEL_WIDTH, -heightGap / 2.0 + heightGap * i, Y_COORDINATE_LABEL_WIDTH, heightGap)];
+//                    [eColumnChartLabel setTextAlignment:NSTextAlignmentCenter];
+//                    eColumnChartLabel.text = [[NSString stringWithFormat:@"%d ", valueGap * (horizontalLabelsCount - i)] stringByAppendingString:[_dataSource highestValueEColumnChart:self].unit];;
+//                    [self addSubview:eColumnChartLabel];
             }
         }
-        else
+        else if let highestColumn = self.dataSource?.highestValueIn(self)
         {
             /** In order to leave some space for the heightest column */
-            _fullValueOfTheGraph = [_dataSource highestValueEColumnChart:self].value * 1.1;
-            float heightGap = self.frame.size.height / 10.0;
-            float valueGap = _fullValueOfTheGraph / 10.0;
-            for (int i = 0; i < 11; i++)
+            _fullValueOfTheGraph = highestColumn.value * 1.1;
+            let heightGap = rect.height / 10.0;
+            let valueGap = self.fullValueOfTheGraph! / 10.0;
+            for i in 1...10
             {
-                UIView *horizontalLine = [[UIView alloc] initWithFrame:CGRectMake(0, heightGap * i, self.frame.size.width, HORIZONTAL_LINE_HEIGHT)];
-                horizontalLine.backgroundColor = ELightGrey;
-                [self addSubview:horizontalLine];
+                var horizontalLine = UIView(frame: CGRectMake(CGFloat(0), CGFloat(heightGap) * CGFloat(i), CGFloat(rect.width), CGFloat(self.horizontalLineHeight)))
+                //                    horizontalLine.backgroundColor = ELightGrey;
+                horizontalLine.backgroundColor = UIColor.redColor()
+                self.addSubview(horizontalLine)
                 
-                EColumnChartLabel *eColumnChartLabel = [[EColumnChartLabel alloc] initWithFrame:CGRectMake(-1 * Y_COORDINATE_LABEL_WIDTH, -heightGap / 2.0 + heightGap * i, Y_COORDINATE_LABEL_WIDTH, heightGap)];
-                [eColumnChartLabel setTextAlignment:NSTextAlignmentCenter];
-                eColumnChartLabel.text = [[NSString stringWithFormat:@"%.1f ", valueGap * (10 - i)] stringByAppendingString:[_dataSource highestValueEColumnChart:self].unit];;
-                
-                //eColumnChartLabel.backgroundColor = ELightBlue;
-                [self addSubview:eColumnChartLabel];
+//                EColumnChartLabel *eColumnChartLabel = [[EColumnChartLabel alloc] initWithFrame:CGRectMake(-1 * Y_COORDINATE_LABEL_WIDTH, -heightGap / 2.0 + heightGap * i, Y_COORDINATE_LABEL_WIDTH, heightGap)];
+//                [eColumnChartLabel setTextAlignment:NSTextAlignmentCenter];
+//                eColumnChartLabel.text = [[NSString stringWithFormat:@"%.1f ", valueGap * (10 - i)] stringByAppendingString:[_dataSource highestValueEColumnChart:self].unit];;
+//                
+//                //eColumnChartLabel.backgroundColor = ELightBlue;
+//                [self addSubview:eColumnChartLabel];
             }
         }
     }
